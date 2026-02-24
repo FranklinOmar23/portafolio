@@ -1,7 +1,7 @@
 import { Badge } from "../components/ui/badge"
 import { Button } from "../components/ui/button"
 import { ImageDisplay } from "../components/image-upload"
-import { Code2, Mail, Github, MapPin, Briefcase, ExternalLink, Rocket } from "lucide-react"
+import { Mail, Github, MapPin, Briefcase, ExternalLink, Rocket } from "lucide-react"
 
 interface HeroSectionProps {
   isVisible: boolean
