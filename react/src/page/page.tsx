@@ -6,6 +6,7 @@ import { ProjectsSection } from "./ProjectsSection"
 import { FeaturedProject } from "./FeaturedProject"
 import { CompanySection } from "./CompanySection"
 import { ContactSection } from "./ContactSection"
+import { FloatingNav } from "../components/FloatingNav"
 
 emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "")
 
@@ -23,6 +24,7 @@ export function Page() {
         <rect width="100%" height="100%" filter="url(#crumple)" />
       </svg>
 
+      <FloatingNav />
       <main>
         <HeroSection />
         <AboutSection />

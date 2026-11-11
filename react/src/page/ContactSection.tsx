@@ -53,7 +53,8 @@ export function ContactSection() {
   return (
     <section id="contacto" aria-labelledby="hablemos" className="band contact">
       <TornEdge position="top" seed={23} />
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
+        <span aria-hidden="true" className="ghost ghost--dark">06</span>
         <h2 id="hablemos" className="disp contact__title rv">
           HABLEMOS<span style={{ color: "var(--accent)" }}>.</span>
         </h2>

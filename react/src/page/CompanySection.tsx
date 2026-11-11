@@ -8,7 +8,8 @@ const values = [
 
 export function CompanySection() {
   return (
-    <section aria-labelledby="arcode" className="wrap arcode rv">
+    <section id="empresa" aria-labelledby="arcode" className="wrap arcode rv">
+      <span aria-hidden="true" className="ghost">05</span>
       <div style={{ flex: "1 1 280px" }}>
         <div className="seal">
           <svg className="spin" viewBox="0 0 300 300" aria-hidden="true">

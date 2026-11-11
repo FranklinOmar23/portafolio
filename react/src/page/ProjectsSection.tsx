@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { projects } from "../data/portfolio"
 import { ProjectModal } from "../components/ProjectModal"
+import { tiltHandlers } from "../components/useTilt"
+
+const tilt = tiltHandlers(7)
 
 const INITIAL = 4
 
@@ -12,15 +15,17 @@ export function ProjectsSection() {
 
   return (
     <section id="proyectos" aria-labelledby="proy" className="wrap" style={{ paddingTop: 80, paddingBottom: 60 }}>
+      <span aria-hidden="true" className="ghost">03</span>
       <div className="section-head rv">
-        <h2 id="proy" className="disp h-section">PROYECTOS</h2>
+        <h2 id="proy" className="disp h-section"><span className="mark">PROYECTOS</span></h2>
         <p className="eyebrow" style={{ fontSize: 15 }}>✷ {String(projects.length).padStart(2, "0")} TRABAJOS SELECCIONADOS</p>
       </div>
 
       <ul id="lista-proyectos" className="projects">
         {visible.map((p, i) => (
           <li key={p.title} className="rv">
-            <article className="pol pol--clickable" style={{ "--r": p.rotate } as React.CSSProperties}>
+            <article className="pol pol--clickable" style={{ "--r": p.rotate } as React.CSSProperties} {...tilt}>
+              <span aria-hidden="true" className="glare" />
               <span aria-hidden="true" className="pol__tape" />
               <div className="pol__shot">
                 <img src={p.image} alt="" loading="lazy" />

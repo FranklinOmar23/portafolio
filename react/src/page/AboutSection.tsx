@@ -8,9 +8,12 @@ const handles = [
 export function AboutSection() {
   return (
     <section id="sobre-mi" aria-labelledby="hola" className="wrap hello rv">
+      <span aria-hidden="true" className="ghost">01</span>
       {/* Foto con marco de selección estilo Figma */}
       <div>
         <div className="select-frame">
+          <span aria-hidden="true" className="tape tape--photo" />
+          <p className="hand sticky-note">¡disponible para freelance! <span aria-hidden="true">✦</span></p>
           <span className="select-frame__label" style={{ top: -26, left: -2 }}>franklin.jpeg</span>
           <img src="/Omar.jpeg" alt="Franklin Disla de traje azul marino y corbata azul" />
           {handles.map(([x, y]) => (
@@ -22,7 +25,7 @@ export function AboutSection() {
 
       {/* Centro */}
       <div className="col">
-        <h2 id="hola" className="disp" style={{ margin: 0, fontSize: "clamp(56px, 7vw, 92px)" }}>HOLA</h2>
+        <h2 id="hola" className="disp" style={{ margin: 0, fontSize: "clamp(56px, 7vw, 92px)" }}><span className="mark">HOLA</span></h2>
         <p style={{ fontWeight: 700 }}>Hi, soy Franklin Disla.</p>
         <p style={{ maxWidth: "42ch", color: "#333" }}>
           Cofundador de Arcode Dominicana y desarrollador freelance. Me apasiona crear soluciones que le hagan

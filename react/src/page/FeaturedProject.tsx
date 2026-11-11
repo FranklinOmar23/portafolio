@@ -2,9 +2,10 @@ import { featured } from "../data/portfolio"
 
 export function FeaturedProject() {
   return (
-    <section aria-labelledby="gran" className="wrap" style={{ paddingTop: 60, paddingBottom: 120 }}>
+    <section id="vortex" aria-labelledby="gran" className="wrap" style={{ paddingTop: 60, paddingBottom: 120 }}>
+      <span aria-hidden="true" className="ghost">04</span>
       <div className="section-head rv" style={{ marginBottom: 40 }}>
-        <h2 id="gran" className="disp h-section">GRAN PROYECTO</h2>
+        <h2 id="gran" className="disp h-section">GRAN <span className="mark">PROYECTO</span></h2>
         <p className="hand" style={{ margin: 0, fontSize: 26, transform: "rotate(-3deg)" }}>el que más orgullo me da ↓</p>
       </div>
 
