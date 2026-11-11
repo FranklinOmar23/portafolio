@@ -1,118 +1,68 @@
-import { AnimatedSection } from "../components/animated-section"
-import { StaggeredList } from "../components/staggered-list"
-import { Award, ExternalLink, Code2, Server, Database, Globe, Settings, Users, Rocket, Shield, FileCode } from "lucide-react"
+import { certifications, experience, skills } from "../data/portfolio"
 
-const skills = [
-  { name: "Node.js", icon: Server, category: "Backend" },
-  { name: "React", icon: Code2, category: "Frontend" },
-  { name: "C#", icon: FileCode, category: "Backend" },
-  { name: "JavaScript", icon: Code2, category: "Frontend" },
-  { name: "SQL Server", icon: Database, category: "Database" },
-  { name: "Supabase", icon: Database, category: "Database" },
-  { name: "PostgreSQL", icon: Database, category: "Database" },
-  { name: "WordPress", icon: Globe, category: "CMS" },
-  { name: "Plugin Development", icon: Settings, category: "CMS" },
-  { name: "Scrum Master", icon: Users, category: "Management" },
-  { name: "TypeScript", icon: Code2, category: "Frontend" },
-  { name: "Next.js", icon: Rocket, category: "Frontend" },
-  { name: "Proxmox VE", icon: Server, category: "Infrastructure" },
-  { name: "Proxmox Backup Server", icon: Database, category: "Infrastructure" },
-  { name: "Virtualización KVM/LXC", icon: Settings, category: "Infrastructure" },
-  { name: "Active Directory", icon: Shield, category: "Infrastructure" },
-  { name: "IIS", icon: Globe, category: "Infrastructure" },
-  { name: "PowerShell", icon: Code2, category: "Infrastructure" },
-]
-
-const certifications = [
-  "Certified Scrum Master (CSM)",
-  "Desarrollo de Plugins WordPress",
-  "Administración de Windows Server",
-  "Especialista en Microsoft Active Directory",
+const handles = [
+  ["0%", "0%"], ["50%", "0%"], ["100%", "0%"], ["0%", "50%"],
+  ["100%", "50%"], ["0%", "100%"], ["50%", "100%"], ["100%", "100%"],
 ]
 
 export function AboutSection() {
   return (
-    <AnimatedSection animation="fade-up" duration={0.8}>
-      <section id="sobre-mi" className="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 transition-colors relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <AnimatedSection animation="fade-down" delay={0.2}>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300">
-                Sobre Mí
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Combino la experiencia técnica en desarrollo full stack con el liderazgo empresarial y la gestión ágil de proyectos.
-              </p>
-            </div>
-          </AnimatedSection>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="space-y-6">
-              <div className="space-y-4 transform hover:scale-105 transition-transform duration-300">
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Mi Trayectoria</h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  Como cofundador de{" "}
-                  <a href="https://arcodedominicana.com" target="_blank" rel="noopener noreferrer"
-                    className="text-emerald-600 dark:text-emerald-400 hover:underline font-semibold inline-flex items-center gap-1 group">
-                    Arcode Dominicana
-                    <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </a>
-                  , he liderado el desarrollo de soluciones tecnológicas innovadoras utilizando tecnologías como Node.js, React, C# y bases de datos como SQL Server y PostgreSQL.
-                </p>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  En mi rol como Encargado de Soporte en una empresa de tecnologia, gestiono equipos técnicos, administro servidores Windows Server, configuro Active Directory e IIS, y resuelvo incidencias críticas aplicando metodologías ágiles como Scrum Master certificado.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-6">
-                <div className="text-center p-4 bg-emerald-50 dark:bg-emerald-950 rounded-lg transform hover:scale-110 hover:shadow-lg transition-all duration-300">
-                  <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">10+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Proyectos Completados</div>
-                </div>
-                <div className="text-center p-4 bg-emerald-50 dark:bg-emerald-950 rounded-lg transform hover:scale-110 hover:shadow-lg transition-all duration-300">
-                  <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">3+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Años de Experiencia</div>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-gray-900 dark:text-white">Certificaciones</h4>
-                <StaggeredList staggerDelay={0.05} animation="fade-right" className="space-y-2">
-                  {certifications.map((cert, index) => (
-                    <div key={index} className="flex items-center space-x-2">
-                      <Award className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                      <span className="text-gray-600 dark:text-gray-300">{cert}</span>
-                    </div>
-                  ))}
-                </StaggeredList>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Stack Tecnológico</h3>
-
-              {[
-                { label: "Backend & Bases de Datos", categories: ["Backend", "Database"] },
-                { label: "Frontend", categories: ["Frontend"] },
-                { label: "CMS & Gestión", categories: ["CMS", "Management"] },
-                { label: "Infraestructura & Servidores", categories: ["Infrastructure"] },
-              ].map(({ label, categories }) => (
-                <div key={label} className="space-y-3">
-                  <h4 className="text-lg font-medium text-gray-800 dark:text-gray-200">{label}</h4>
-                  <div className="grid grid-cols-2 gap-3">
-                    {skills.filter((s) => categories.includes(s.category)).map((skill, index) => (
-                      <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-emerald-50 dark:hover:bg-emerald-950 transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer">
-                        <skill.icon className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
-                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{skill.name}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+    <section id="sobre-mi" aria-labelledby="hola" className="wrap hello rv">
+      {/* Foto con marco de selección estilo Figma */}
+      <div>
+        <div className="select-frame">
+          <span className="select-frame__label" style={{ top: -26, left: -2 }}>franklin.jpeg</span>
+          <img src="/Omar.jpeg" alt="Franklin Disla de traje azul marino y corbata azul" />
+          {handles.map(([x, y]) => (
+            <span key={x + y} className="select-frame__handle" style={{ left: x, top: y }} />
+          ))}
+          <span className="select-frame__label" style={{ bottom: -24, left: "50%", transform: "translateX(-50%)", fontSize: 10 }}>280 × 466</span>
         </div>
-      </section>
-    </AnimatedSection>
+      </div>
+
+      {/* Centro */}
+      <div className="col">
+        <h2 id="hola" className="disp" style={{ margin: 0, fontSize: "clamp(56px, 7vw, 92px)" }}>HOLA</h2>
+        <p style={{ fontWeight: 700 }}>Hi, soy Franklin Disla.</p>
+        <p style={{ maxWidth: "42ch", color: "#333" }}>
+          Cofundador de Arcode Dominicana y desarrollador freelance. Me apasiona crear soluciones que le hagan
+          la vida más fácil a la gente, ya sea con Node.js, React o C#, o asegurándome de que todo funcione en los servidores.
+        </p>
+        <h3 className="disp h-sub" style={{ marginTop: 26 }}>EDUCACIÓN</h3>
+        <div>
+          <p style={{ fontWeight: 700 }}>Administración de Empresas</p>
+          <p className="muted">Universidad O&amp;M</p>
+        </div>
+        <div>
+          <p style={{ fontWeight: 700, marginBottom: 6 }}>Certificaciones</p>
+          <ul className="plain-list">
+            {certifications.map((c) => <li key={c}>✦ {c}</li>)}
+          </ul>
+        </div>
+      </div>
+
+      {/* Derecha */}
+      <div className="col">
+        <h3 className="disp h-sub">SKILLS</h3>
+        <ul className="skills">
+          {skills.map((s) => (
+            <li key={s.name} className="skill">
+              <span className="skill__tile" style={{ color: s.color }} aria-hidden="true">{s.mono}</span>
+              <span className="skill__name">{s.name}</span>
+            </li>
+          ))}
+        </ul>
+        <h3 id="experiencia" className="disp h-sub" style={{ marginTop: 26 }}>EXPERIENCIA</h3>
+        <ol className="xp">
+          {experience.map((x) => (
+            <li key={x.years + x.company}>
+              <p className="xp__year">{x.years}</p>
+              <p style={{ fontWeight: 700 }}>{x.role}</p>
+              <p className="muted">{x.company}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
   )
 }

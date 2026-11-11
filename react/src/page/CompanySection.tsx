@@ -1,49 +1,52 @@
-import { RevealOnScroll } from "../components/reveal-on-scroll"
-import { Button } from "../components/ui/button"
-import { Target, Award, Users, ArrowRight, ExternalLink } from "lucide-react"
+import { links } from "../data/portfolio"
+
+const values = [
+  { sym: "✷", title: "INNOVACIÓN", desc: "Tecnologías modernas para soluciones eficientes." },
+  { sym: "✦", title: "CALIDAD", desc: "Metodologías ágiles y mejores prácticas." },
+  { sym: "♣", title: "SOPORTE", desc: "Acompañamiento técnico especializado." },
+]
 
 export function CompanySection() {
   return (
-    <RevealOnScroll direction="bottom" delay={0.2}>
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-emerald-600 dark:bg-emerald-800 transition-colors relative overflow-hidden z-10">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          <div className="space-y-6">
-            <a href="https://arcodedominicana.com" target="_blank" rel="noopener noreferrer" className="inline-block group">
-              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 hover:scale-110 transition-transform duration-300 inline-flex items-center gap-2">
-                Arcode Dominicana
-                <ExternalLink className="w-8 h-8 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1" />
-              </h2>
-            </a>
-            <p className="text-xl text-emerald-100 dark:text-emerald-200 max-w-3xl mx-auto leading-relaxed">
-              Como cofundador, lideramos el desarrollo de soluciones tecnológicas innovadoras, desde aplicaciones web con React y Node.js hasta sistemas empresariales con C# y SQL Server. Especializados en WordPress y desarrollo de plugins personalizados.
-            </p>
-            <Button asChild size="lg" variant="secondary"
-              className="mt-6 bg-white text-emerald-600 hover:bg-emerald-50 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl group">
-              <a href="https://arcodedominicana.com" target="_blank" rel="noopener noreferrer">
-                Visitar Arcode Dominicana
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Button>
-            <div className="grid md:grid-cols-3 gap-8 mt-12">
-              {[
-                { icon: Target, title: "Innovación", desc: "Tecnologías modernas para soluciones eficientes" },
-                { icon: Award, title: "Calidad", desc: "Metodologías ágiles y mejores prácticas" },
-                { icon: Users, title: "Soporte", desc: "Acompañamiento técnico especializado" },
-              ].map(({ icon: Icon, title, desc }) => (
-                <div key={title} className="text-center transform hover:scale-110 transition-all duration-300">
-                  <Icon className="w-12 h-12 text-emerald-200 dark:text-emerald-300 mx-auto mb-4" />
-                  <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
-                  <p className="text-emerald-100 dark:text-emerald-200">{desc}</p>
-                </div>
-              ))}
-            </div>
+    <section aria-labelledby="arcode" className="wrap arcode rv">
+      <div style={{ flex: "1 1 280px" }}>
+        <div className="seal">
+          <svg className="spin" viewBox="0 0 300 300" aria-hidden="true">
+            <defs><path id="ring" d="M150 150 m -118 0 a 118 118 0 1 1 236 0 a 118 118 0 1 1 -236 0" /></defs>
+            <circle cx="150" cy="150" r="146" fill="#111" />
+            <circle cx="150" cy="150" r="136" fill="none" stroke="#fff" strokeWidth="1.5" strokeDasharray="3 5" />
+            <text fill="#fff" fontFamily="Archivo Black, sans-serif" fontSize="20" letterSpacing="3">
+              <textPath href="#ring">ARCODE DOMINICANA ✷ SANTO DOMINGO ✷ EST. 2025 ✷</textPath>
+            </text>
+          </svg>
+          <div className="seal__core">
+            <span className="disp" style={{ fontSize: "clamp(44px, 6vw, 64px)", lineHeight: 0.9 }}>AD</span>
           </div>
         </div>
-      </section>
-    </RevealOnScroll>
+      </div>
+
+      <div style={{ flex: "999 1 520px", minWidth: 0, display: "flex", flexDirection: "column", gap: 22 }}>
+        <p className="eyebrow">✷ MI EMPRESA</p>
+        <h2 id="arcode" className="disp" style={{ margin: 0, fontSize: "clamp(44px, 6vw, 84px)" }}>ARCODE DOMINICANA</h2>
+        <p className="muted" style={{ margin: 0, fontSize: 14, maxWidth: "62ch" }}>
+          Como cofundador, lideramos el desarrollo de soluciones tecnológicas: aplicaciones web con React y Node.js,
+          sistemas empresariales con C# y SQL Server, y plugins de WordPress a la medida.
+        </p>
+        <ul className="values">
+          {values.map((v) => (
+            <li key={v.title} className="hardcard">
+              <span aria-hidden="true" style={{ fontSize: 26, lineHeight: 1 }}>{v.sym}</span>
+              <h3 className="disp">{v.title}</h3>
+              <p>{v.desc}</p>
+            </li>
+          ))}
+        </ul>
+        <div>
+          <a className="btn" href={links.arcode} target="_blank" rel="noopener noreferrer">
+            Visitar Arcode Dominicana <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
   )
 }
