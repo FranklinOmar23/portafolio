@@ -112,11 +112,25 @@ export const projects: Project[] = [
   },
 ]
 
-/** Proyecto destacado ("Gran Proyecto"). */
+/** Proyecto destacado ("Gran Proyecto"). Textos tomados de vortex-pos.com */
 export const featured = {
   name: "Vortex",
-  description: "[Describe Vortex en una o dos frases: qué problema resuelve y para quién.]", // TODO
-  tech: ["[Tecnología]", "[Tecnología]", "[Tecnología]"], // TODO
-  url: "#", // TODO: enlace a Vortex
-  image: "", // TODO: captura, p. ej. "/vortex.png" en /public (vacío = marcador)
+  logo: "/vortex/logo.png",
+  tagline: "Control de ventas y facturación automática",
+  description:
+    "Software de punto de venta para negocios de mostrador: cobras, facturas, descuentas inventario y cierras caja desde la misma pantalla, y administras todas tus sucursales desde un solo lugar.",
+  highlights: [
+    "Cobro en efectivo, tarjeta o transferencia",
+    "Inventario sincronizado en tiempo real",
+    "Comprobantes fiscales electrónicos",
+    "Varias sucursales en un mismo sistema",
+  ],
+  tags: ["Punto de venta", "Inventario", "Facturación", "Multi-sucursal"],
+  url: "https://vortex-pos.com",
+  image: "/vortex/pos.webp",
+  gallery: [
+    { src: "/vortex/inventario.webp", caption: "Inventario" },
+    { src: "/vortex/factura.webp", caption: "Cobro y factura" },
+    { src: "/vortex/sucursales.webp", caption: "Sucursales" },
+  ],
 }

@@ -188,9 +188,21 @@ a:hover { color: var(--accent); }
 .browser-bar { display: flex; gap: 6px; padding: 10px 12px; background: #222; border-radius: 8px 8px 0 0; }
 .browser-bar span { width: 10px; height: 10px; border-radius: 50%; background: #555; }
 .browser-bar span:first-child { background: var(--accent); }
-.browser-bar span:last-child { flex: 1; margin-left: 12px; border-radius: 5px; background: #333; }
-.featured__screen { position: relative; aspect-ratio: 16 / 9; background: repeating-linear-gradient(45deg, #1c1c1c 0 10px, #181818 10px 20px); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.featured__screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.browser-bar__url { flex: 1; width: auto !important; height: auto !important; margin-left: 12px; border-radius: 5px !important; background: #333 !important; color: #bbb; font-size: 11px; padding: 0 10px; line-height: 16px; }
+.featured__screen { position: relative; display: block; background: #f6f6fb !important; overflow: hidden; }
+.featured__screen--empty { aspect-ratio: 16 / 9; background: repeating-linear-gradient(45deg, #1c1c1c 0 10px, #181818 10px 20px); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.featured__screen img { width: 100%; height: auto; display: block; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.featured__screen:hover img { transform: scale(1.02); }
+.featured__screen:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.featured__gallery { margin: 18px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.featured__gallery figure { margin: 0; background: #fbfbfa; padding: 6px 6px 4px; transition: transform .3s; }
+.featured__gallery li:nth-child(1) figure { transform: rotate(-2deg); }
+.featured__gallery li:nth-child(2) figure { transform: rotate(1.5deg); }
+.featured__gallery li:nth-child(3) figure { transform: rotate(-1deg); }
+.featured__gallery figure:hover { transform: rotate(0) translateY(-4px); }
+.featured__gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.featured__gallery figcaption { font-size: 18px; line-height: 1.2; text-align: center; color: var(--ink); }
+.featured__logo { height: clamp(38px, 4.4vw, 54px); width: auto; display: block; }
 .featured__body { flex: 1 1 300px; padding: clamp(24px, 3vw, 40px); display: flex; flex-direction: column; gap: 16px; justify-content: center; }
 .featured__body p { margin: 0; }
 
@@ -198,7 +210,8 @@ a:hover { color: var(--accent); }
 .arcode { padding-top: 40px; padding-bottom: 140px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
 .seal { position: relative; width: min(100%, 300px); aspect-ratio: 1; margin: 0 auto; }
 .seal svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.seal__core { position: absolute; inset: 22%; border-radius: 50%; background: var(--accent); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; transform: rotate(-8deg); box-shadow: inset 0 0 0 4px var(--ink); }
+.seal__core { position: absolute; inset: 19%; border-radius: 50%; background: #f3efec; display: flex; align-items: center; justify-content: center; transform: rotate(-8deg); box-shadow: 0 0 0 4px var(--accent), 0 0 0 7px var(--ink); overflow: hidden; }
+.seal__core img { width: 82%; height: auto; display: block; }
 .values { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 18px; }
 .values li { padding: 18px; display: flex; flex-direction: column; gap: 6px; }
 .values h3 { margin: 0; font-size: 24px; }
@@ -287,3 +300,4 @@ textarea.fld { resize: vertical; }
 .modal__list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; }
 .modal__actions { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 6px; }
 @media (prefers-reduced-motion: reduce) { .modal[open] { animation: none; } }
+@media (max-width: 640px) { .featured__gallery { gap: 8px; } .featured__gallery figcaption { font-size: 14px; } }

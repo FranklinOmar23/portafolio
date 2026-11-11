@@ -16,11 +16,11 @@ export function CompanySection() {
             <circle cx="150" cy="150" r="146" fill="#111" />
             <circle cx="150" cy="150" r="136" fill="none" stroke="#fff" strokeWidth="1.5" strokeDasharray="3 5" />
             <text fill="#fff" fontFamily="Archivo Black, sans-serif" fontSize="20" letterSpacing="3">
-              <textPath href="#ring">ARCODE DOMINICANA ✷ SANTO DOMINGO ✷ EST. 2025 ✷</textPath>
+              <textPath href="#ring" textLength="728" lengthAdjust="spacing">ARCODE DOMINICANA ✷ SANTO DOMINGO ✷ EST. 2025 ✷</textPath>
             </text>
           </svg>
           <div className="seal__core">
-            <span className="disp" style={{ fontSize: "clamp(44px, 6vw, 64px)", lineHeight: 0.9 }}>AD</span>
+            <img src="/brand/arcode-logo.webp" alt="Logo de Arcode Dominicana" />
           </div>
         </div>
       </div>

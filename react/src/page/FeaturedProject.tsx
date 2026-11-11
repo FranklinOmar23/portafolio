@@ -10,25 +10,39 @@ export function FeaturedProject() {
 
       <article className="rv hardcard featured">
         <span aria-hidden="true" className="featured__stamp">✷ DESTACADO</span>
+
         <div className="featured__media">
-          <div className="browser-bar" aria-hidden="true"><span /><span /><span /><span /></div>
-          <div className="featured__screen">
-            {featured.image ? (
-              <img src={featured.image} alt={`Captura de ${featured.name}`} loading="lazy" />
-            ) : (
-              <>
-                <span className="disp spin" aria-hidden="true" style={{ position: "absolute", fontSize: "clamp(120px, 20vw, 260px)", color: "#222", lineHeight: 1 }}>✷</span>
-                <span className="disp" style={{ position: "relative", color: "#fff", fontSize: "clamp(48px, 8vw, 104px)" }}>{featured.name}</span>
-              </>
-            )}
+          <div className="browser-bar" aria-hidden="true">
+            <span /><span /><span />
+            <span className="browser-bar__url">vortex-pos.com</span>
           </div>
+          <a className="featured__screen" href={featured.url} target="_blank" rel="noopener noreferrer" aria-label={`Abrir ${featured.name} en una pestaña nueva`}>
+            <img src={featured.image} alt={`Pantalla de punto de venta de ${featured.name}`} loading="lazy" />
+          </a>
+          <ul className="featured__gallery">
+            {featured.gallery.map((g) => (
+              <li key={g.src}>
+                <figure>
+                  <img src={g.src} alt={`${featured.name}: ${g.caption}`} loading="lazy" />
+                  <figcaption className="hand">{g.caption}</figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
         </div>
+
         <div className="featured__body">
           <p className="eyebrow" style={{ fontSize: 13 }}>✷ PROYECTO INSIGNIA</p>
-          <h3 className="disp" style={{ margin: 0, fontSize: "clamp(48px, 5vw, 72px)" }}>{featured.name}</h3>
+          <h3 style={{ margin: 0 }}>
+            <img className="featured__logo" src={featured.logo} alt={featured.name} />
+          </h3>
+          <p style={{ fontWeight: 700, textTransform: "uppercase", letterSpacing: ".06em", fontSize: 12 }}>{featured.tagline}</p>
           <p className="muted" style={{ fontSize: 14 }}>{featured.description}</p>
+          <ul className="plain-list" style={{ fontSize: 13.5 }}>
+            {featured.highlights.map((h) => <li key={h}>✦ {h}</li>)}
+          </ul>
           <ul className="tags">
-            {featured.tech.map((t, i) => <li key={t + i} className="tag">{t}</li>)}
+            {featured.tags.map((t) => <li key={t} className="tag">{t}</li>)}
           </ul>
           <div style={{ marginTop: 8 }}>
             <a className="btn" href={featured.url} target="_blank" rel="noopener noreferrer">
