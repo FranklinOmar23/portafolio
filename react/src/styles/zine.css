@@ -152,14 +152,14 @@ a:hover { color: var(--accent); }
 .plain-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; color: #333; }
 
 /* ---------- 3. Banda del nombre ---------- */
-.nameband { padding: 70px 0; margin: 40px 0 90px; }
-.marquee { overflow: hidden; position: relative; }
-.mq { display: flex; width: max-content; animation: mq 48s linear infinite; font-size: clamp(96px, 17vw, 250px); white-space: nowrap; line-height: 1.05; padding: 40px 0; }
-.mq span { padding-right: .35em; }
-.sticker { position: absolute; left: 50%; bottom: -36px; transform: translateX(-50%); width: clamp(220px, 32vw, 400px); pointer-events: none; }
-.sticker svg { width: 100%; display: block; overflow: visible; }
-@media (max-width: 640px) { .nameband__symbols { display: none !important; } }
-.nameband__symbols { position: absolute; right: clamp(16px, 6vw, 90px); top: 50%; margin-top: -.5em; font-size: clamp(30px, 4.5vw, 64px); gap: 10px; }
+.nameband { padding: 60px 0; margin: 40px 0 90px; }
+.marquee { overflow: hidden; position: relative; display: flex; flex-direction: column; gap: 6px; }
+.mq { display: flex; width: max-content; animation: mq 70s linear infinite; font-size: clamp(56px, 10vw, 150px); white-space: pre; line-height: 1.02; }
+.mq--reverse { animation-direction: reverse; animation-duration: 90s; }
+.mq--outline { color: transparent; -webkit-text-stroke: 2px #fff; }
+.sticker { position: absolute; left: 50%; top: 50%; width: clamp(150px, 22vw, 290px); transform: translate(-50%, -50%) rotate(-10deg); pointer-events: none; filter: drop-shadow(6px 8px 0 rgba(0,0,0,.55)); }
+.sticker svg { width: 100%; display: block; animation: wob 6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .sticker svg { animation: none; } }
 
 /* ---------- 4. Proyectos (polaroids) ---------- */
 .section-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; margin-bottom: 48px; }
@@ -237,3 +237,53 @@ textarea.fld { resize: vertical; }
 
 .footer { margin-top: 80px; padding-top: 22px; border-top: 1px solid #333; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; color: #bdbdbd; font-size: 12px; }
 .footer a { color: #fff; }
+
+/* ---------- Polaroid clicable + modal de proyecto ---------- */
+.pol--clickable { cursor: pointer; }
+.pol__open {
+  all: unset; cursor: pointer; font: inherit; text-transform: inherit; letter-spacing: inherit;
+}
+/* El botón del título cubre toda la tarjeta: clic en cualquier parte abre el modal */
+.pol__open::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.pol__open:focus-visible::after { outline: 3px solid var(--accent); outline-offset: 4px; }
+.pol__shot { position: relative; }
+.pol__hint {
+  position: absolute; right: 8px; bottom: 8px; background: var(--ink); color: #fff;
+  font-family: var(--font-display); font-size: 11px; padding: 4px 8px;
+  opacity: 0; transform: translateY(6px); transition: opacity .25s, transform .25s;
+}
+.pol:hover .pol__hint, .pol:focus-within .pol__hint { opacity: 1; transform: none; }
+
+.modal {
+  border: 0; padding: 18px 18px 0 0; background: transparent; color: var(--ink);
+  width: min(960px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); overflow: visible;
+}
+.modal::backdrop { background: rgba(17,17,17,.78); backdrop-filter: blur(3px); }
+.modal[open] { animation: modalIn .35s cubic-bezier(.2,.8,.2,1); }
+@keyframes modalIn { from { opacity: 0; transform: translateY(30px) rotate(-1.5deg); } to { opacity: 1; transform: none; } }
+.modal__card {
+  position: relative; border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--ink);
+  max-height: calc(100dvh - 60px); overflow-y: auto; font-family: var(--font-body); font-size: 14px; line-height: 1.6;
+}
+.modal__frame { position: relative; }
+.modal__close {
+  position: absolute; top: -16px; right: -16px; z-index: 2;
+  width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+  background: var(--accent); color: #fff; border: 2px solid var(--ink); cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink); transform: rotate(4deg); transition: transform .15s;
+}
+@media (max-width: 640px) { .modal__close { top: -12px; right: -6px; } }
+.modal__close:hover { background: var(--ink); transform: rotate(-4deg); }
+.modal__close:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.modal__shot { background: var(--ink); padding: clamp(12px, 3vw, 28px); }
+.modal__shot img { width: 100%; max-height: 52vh; object-fit: contain; display: block; background: #fff; }
+.modal__body { padding: clamp(20px, 4vw, 40px); display: flex; flex-direction: column; gap: 18px; }
+.modal__head { display: flex; gap: 14px; align-items: flex-start; }
+.modal__num { font-size: clamp(48px, 7vw, 76px); line-height: .8; color: var(--accent); }
+.modal__title { margin: 0; font-size: clamp(28px, 4.4vw, 48px); }
+.modal__text { margin: 0; max-width: 68ch; color: #2a2a2a; font-size: 15px; }
+.modal__cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+.modal__sub { margin: 0 0 10px; font-size: 22px; }
+.modal__list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.modal__actions { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 6px; }
+@media (prefers-reduced-motion: reduce) { .modal[open] { animation: none; } }

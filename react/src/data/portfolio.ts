@@ -44,35 +44,71 @@ export const certifications = [
   "Desarrollo de Plugins WordPress",
 ]
 
+export type Project = {
+  title: string
+  /** Frase corta para la tarjeta polaroid. */
+  description: string
+  /** Texto completo que aparece en el modal de detalle. */
+  details: string
+  /** Puntos clave / funcionalidades (modal). */
+  highlights: string[]
+  tech: string[]
+  image: string
+  rotate: string
+  /** Enlaces opcionales: vacío = no se muestra el botón. */
+  demo?: string
+  repo?: string
+}
+
 /** Se muestran los 4 primeros; si hay más, aparece el botón "Ver más". */
-export const projects = [
+export const projects: Project[] = [
   {
     title: "Sistema de Gestión Hospitalaria",
     description: "Pacientes, médicos, citas, inventario y roles.",
+    details:
+      "Aplicación completa desarrollada en Node.js y React para la administración de pacientes, médicos y citas médicas. Incluye control de inventario, reportes y gestión de usuarios con diferentes roles.",
+    highlights: ["Gestión de pacientes y médicos", "Agenda de citas médicas", "Control de inventario", "Reportes", "Usuarios con distintos roles"],
     tech: ["Node.js", "React", "SQL Server", "Express"],
     image: "/hospital-system.png",
     rotate: "-2.5deg",
+    demo: "", // TODO
+    repo: "", // TODO
   },
   {
     title: "Generador de Volantes de Pago",
     description: "PDFs automáticos desde datos de nómina.",
+    details:
+      "Herramienta desarrollada en Python para automatizar la creación de volantes de pago en PDF a partir de datos de nómina. Reduce tiempos de generación y mejora la precisión en los cálculos.",
+    highlights: ["Lee los datos de nómina desde Excel", "Genera un PDF por empleado", "Cálculos automáticos y precisos", "Menos tiempo de generación"],
     tech: ["Python", "Pandas", "ReportLab", "Excel"],
     image: "/payroll-generator.png",
     rotate: "1.8deg",
+    demo: "",
+    repo: "",
   },
   {
     title: "Sistema de Organización de Viajes",
     description: "Reservas, clientes, pagos y cupos para agencias.",
+    details:
+      "Plataforma web que permite gestionar reservas, clientes y pagos para agencias de viajes. Incluye panel administrativo, historial de excursiones y control de cupos disponibles.",
+    highlights: ["Reservas y clientes", "Registro de pagos", "Panel administrativo", "Historial de excursiones", "Control de cupos disponibles"],
     tech: ["React", "Vite", "Supabase", "Node.js"],
     image: "/travel-system.png",
     rotate: "-1.2deg",
+    demo: "",
+    repo: "",
   },
   {
     title: "Generador y Gestor de PDF",
     description: "Convertir imágenes a PDF, separar y unir documentos.",
+    details:
+      "Aplicación web desarrollada en React que permite convertir imágenes en archivos PDF, separar documentos por páginas y unir varios PDF en uno solo. Una herramienta práctica y rápida para la gestión de documentos digitales.",
+    highlights: ["Convierte imágenes a PDF", "Separa documentos por páginas", "Une varios PDF en uno", "Todo desde el navegador"],
     tech: ["React", "JavaScript", "PDF.js", "FileSaver.js"],
     image: "/pdf-generator.png",
     rotate: "2.6deg",
+    demo: "",
+    repo: "",
   },
 ]
 

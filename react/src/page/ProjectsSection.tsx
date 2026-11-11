@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { projects } from "../data/portfolio"
+import { ProjectModal } from "../components/ProjectModal"
 
 const INITIAL = 4
 
 export function ProjectsSection() {
   const [showAll, setShowAll] = useState(false)
+  const [openIdx, setOpenIdx] = useState<number | null>(null)
   const hasMore = projects.length > INITIAL
   const visible = showAll ? projects : projects.slice(0, INITIAL)
 
@@ -18,14 +20,19 @@ export function ProjectsSection() {
       <ul id="lista-proyectos" className="projects">
         {visible.map((p, i) => (
           <li key={p.title} className="rv">
-            <article className="pol" style={{ "--r": p.rotate } as React.CSSProperties}>
+            <article className="pol pol--clickable" style={{ "--r": p.rotate } as React.CSSProperties}>
               <span aria-hidden="true" className="pol__tape" />
               <div className="pol__shot">
-                <img src={p.image} alt={`Captura de ${p.title}`} loading="lazy" />
+                <img src={p.image} alt="" loading="lazy" />
+                <span aria-hidden="true" className="pol__hint">VER DETALLE ↗</span>
               </div>
               <div className="pol__head">
                 <span className="disp pol__num">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="pol__title">{p.title}</h3>
+                <h3 className="pol__title">
+                  <button type="button" className="pol__open" aria-haspopup="dialog" onClick={() => setOpenIdx(i)}>
+                    {p.title}
+                  </button>
+                </h3>
               </div>
               <p>{p.description}</p>
               <ul className="tags">
@@ -44,6 +51,12 @@ export function ProjectsSection() {
           </button>
         </div>
       )}
+
+      <ProjectModal
+        project={openIdx === null ? null : projects[openIdx]}
+        index={openIdx ?? 0}
+        onClose={() => setOpenIdx(null)}
+      />
     </section>
   )
 }
